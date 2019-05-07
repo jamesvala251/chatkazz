@@ -1,0 +1,13 @@
+<div class="app mat-typography" [dir]="options.dir">
+    <app-topbar (toggleSidenav)="sidemenu.toggle()"></app-topbar>
+    <mat-sidenav-container class="app-inner">
+        <mat-sidenav #sidemenu class="sidebar-panel" id="sidebar-panel" [mode]="isOver() ? 'over' : 'side'" [opened]="!isOver()"
+            (open)="sidePanelOpened = true" (close)="sidePanelOpened = false" (mouseover)="menuMouseOver()" (mouseout)="menuMouseOut()"
+            [perfectScrollbar]="config" [disabled]="mediaMatcher.matches">
+            <app-franchise-navbar (click)="updatePS()"></app-franchise-navbar>
+        </mat-sidenav>
+        <div [perfectScrollbar]="config" [disabled]="mediaMatcher.matches">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-container>
+</div>
